@@ -124,7 +124,7 @@
                                 </segments>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Query Method" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fae-hl-TAp">
-                                <rect key="frame" x="165" y="559" width="121" height="21"/>
+                                <rect key="frame" x="140" y="559" width="121" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="121" id="Y6c-pO-tIL"/>
                                     <constraint firstAttribute="height" constant="21" id="jMw-nr-iTX"/>
@@ -133,21 +133,37 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1vV-mE-GhN">
-                                <rect key="frame" x="-7" y="28" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vV-mE-GhN">
+                                <rect key="frame" x="16" y="28" width="568" height="44"/>
                                 <items>
-                                    <navigationItem title="Add Zipcode" id="vZI-p3-SKs"/>
+                                    <navigationItem title="Weather Zipcode" id="vZI-p3-SKs">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="8UV-U0-Lbz">
+                                            <connections>
+                                                <action selector="done:" destination="GnW-2B-QMU" id="2BK-cB-Mgf"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="kWS-55-vSZ">
+                                            <connections>
+                                                <action selector="addZipcode:" destination="GnW-2B-QMU" id="brW-Q7-cOn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="HEP-M7-wRe" firstAttribute="centerY" secondItem="Fae-hl-TAp" secondAttribute="centerY" id="3gu-5v-n7S"/>
-                            <constraint firstAttribute="centerX" secondItem="Fae-hl-TAp" secondAttribute="centerX" constant="75" id="EHd-zJ-hih"/>
+                            <constraint firstItem="1vV-mE-GhN" firstAttribute="leading" secondItem="9k9-W2-p11" secondAttribute="leadingMargin" id="3k2-fc-lJT"/>
+                            <constraint firstItem="Ss7-Gc-i8r" firstAttribute="top" secondItem="1vV-mE-GhN" secondAttribute="bottom" constant="8" id="9dn-Fd-dwx"/>
+                            <constraint firstAttribute="centerX" secondItem="Fae-hl-TAp" secondAttribute="centerX" constant="100" id="EHd-zJ-hih"/>
                             <constraint firstAttribute="centerX" secondItem="HEP-M7-wRe" secondAttribute="centerX" constant="-75" id="KZo-av-rBE"/>
                             <constraint firstItem="Fae-hl-TAp" firstAttribute="top" secondItem="Ss7-Gc-i8r" secondAttribute="bottom" constant="27" id="cHp-eY-rGd"/>
                             <constraint firstItem="PUJ-sF-2CL" firstAttribute="top" secondItem="Fae-hl-TAp" secondAttribute="bottom" constant="20" id="fvi-q4-cSE"/>
+                            <constraint firstItem="1vV-mE-GhN" firstAttribute="trailing" secondItem="9k9-W2-p11" secondAttribute="trailingMargin" id="g2f-5V-CLs"/>
                             <constraint firstItem="Ss7-Gc-i8r" firstAttribute="top" secondItem="9k9-W2-p11" secondAttribute="topMargin" constant="80" id="hKB-iz-KWy"/>
+                            <constraint firstAttribute="centerX" secondItem="1vV-mE-GhN" secondAttribute="centerX" id="i6l-At-ki9"/>
+                            <constraint firstItem="1vV-mE-GhN" firstAttribute="top" secondItem="5za-dz-Z1G" secondAttribute="bottom" constant="8" id="kHR-ga-yeu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ss7-Gc-i8r" secondAttribute="trailing" id="lVn-fF-JKY"/>
                             <constraint firstItem="Ss7-Gc-i8r" firstAttribute="leading" secondItem="9k9-W2-p11" secondAttribute="leadingMargin" id="n8r-Yr-kc0"/>
                         </constraints>
@@ -157,6 +173,91 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Coz-Bg-q22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Add Zipcode View Controller-->
+        <scene sceneID="LR1-xc-4Xx">
+            <objects>
+                <viewController storyboardIdentifier="AddZipcodeViewController" id="fmZ-pe-6iP" customClass="AddZipcodeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bfi-oQ-EUi"/>
+                        <viewControllerLayoutGuide type="bottom" id="JXK-FV-lzl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="coc-e4-Qk0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a zipcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1B-XU-ggP">
+                                <rect key="frame" x="129" y="141" width="120" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qvn-PT-tMD">
+                                <rect key="frame" x="259" y="137" width="202" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="202" id="Xgc-47-7sm"/>
+                                    <constraint firstAttribute="height" constant="30" id="wBD-t2-hqD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="fmZ-pe-6iP" id="bd3-tv-uRt"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2nk-zh-SME">
+                                <rect key="frame" x="259" y="202" width="202" height="30"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addZipcode:" destination="fmZ-pe-6iP" eventType="touchUpInside" id="rjO-fe-vok"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUT-dg-GDQ">
+                                <rect key="frame" x="16" y="28" width="568" height="44"/>
+                                <items>
+                                    <navigationItem title="New Zipcode" id="zlF-5J-TOG">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="jXZ-FX-lwl">
+                                            <connections>
+                                                <action selector="done:" destination="fmZ-pe-6iP" id="qmA-gt-e84"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3f7-cJ-ntj">
+                                <rect key="frame" x="129" y="81" width="455" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="3f7-cJ-ntj" secondAttribute="trailing" id="4wV-2T-uyE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oUT-dg-GDQ" secondAttribute="trailing" id="DwD-aJ-Z4X"/>
+                            <constraint firstItem="3f7-cJ-ntj" firstAttribute="top" secondItem="oUT-dg-GDQ" secondAttribute="bottom" constant="9" id="HmR-wr-qrO"/>
+                            <constraint firstItem="Qvn-PT-tMD" firstAttribute="leading" secondItem="l1B-XU-ggP" secondAttribute="trailing" constant="10" id="Ljk-vQ-qK6"/>
+                            <constraint firstItem="Qvn-PT-tMD" firstAttribute="top" secondItem="oUT-dg-GDQ" secondAttribute="bottom" constant="65" id="QqN-qh-bcD"/>
+                            <constraint firstAttribute="centerX" secondItem="Qvn-PT-tMD" secondAttribute="centerX" constant="-60" id="W88-Sp-IGL"/>
+                            <constraint firstItem="2nk-zh-SME" firstAttribute="top" secondItem="Qvn-PT-tMD" secondAttribute="bottom" constant="35" id="X4z-Yh-Sib"/>
+                            <constraint firstItem="l1B-XU-ggP" firstAttribute="centerY" secondItem="Qvn-PT-tMD" secondAttribute="centerY" id="aPX-jO-FzS"/>
+                            <constraint firstAttribute="centerX" secondItem="oUT-dg-GDQ" secondAttribute="centerX" id="eVB-rL-Ajd"/>
+                            <constraint firstItem="oUT-dg-GDQ" firstAttribute="leading" secondItem="coc-e4-Qk0" secondAttribute="leadingMargin" id="gY9-h4-yLf"/>
+                            <constraint firstItem="l1B-XU-ggP" firstAttribute="leading" secondItem="3f7-cJ-ntj" secondAttribute="leading" id="gpN-0B-EeI"/>
+                            <constraint firstItem="Qvn-PT-tMD" firstAttribute="top" secondItem="3f7-cJ-ntj" secondAttribute="bottom" constant="15" id="hmm-c8-VYe"/>
+                            <constraint firstItem="Qvn-PT-tMD" firstAttribute="width" secondItem="2nk-zh-SME" secondAttribute="width" id="sDj-uG-PfT"/>
+                            <constraint firstItem="oUT-dg-GDQ" firstAttribute="top" secondItem="Bfi-oQ-EUi" secondAttribute="bottom" constant="8" id="xL5-p8-aBq"/>
+                            <constraint firstItem="Qvn-PT-tMD" firstAttribute="centerX" secondItem="2nk-zh-SME" secondAttribute="centerX" id="zK1-SN-m57"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="statusLabel" destination="3f7-cJ-ntj" id="bAS-rI-LPx"/>
+                        <outlet property="zipcodeTextField" destination="Qvn-PT-tMD" id="VvV-84-n3D"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1u-qd-ZY0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
