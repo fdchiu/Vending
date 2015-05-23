@@ -40,6 +40,9 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         pageViewRect = CGRectInset(pageViewRect, 40.0, 40.0);
     }
+    else
+        pageViewRect = CGRectInset(pageViewRect, 0.0, 50.0);
+    
     self.pageViewController.view.frame = pageViewRect;
 
     [self.pageViewController didMoveToParentViewController:self];
@@ -93,5 +96,16 @@
 
     return UIPageViewControllerSpineLocationMid;
 }
+
+#pragma mark - Setting Button
+
+- (IBAction)setup:(id)sender {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
+    UIViewController *vC=[storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
+    [self presentViewController:vC animated:YES completion:nil];
+    
+}
+
 
 @end

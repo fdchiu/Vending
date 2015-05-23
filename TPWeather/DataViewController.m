@@ -29,12 +29,5 @@
     self.dataLabel.text = [self.dataObject description];
 }
 
-- (IBAction)setup:(id)sender {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    
-    UIViewController *vC=[storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
-    [self presentViewController:vC animated:YES completion:nil];
-
-}
 
 @end
