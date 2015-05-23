@@ -16,6 +16,8 @@
 		63888C0A1B0FF9DF00F65C05 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63888C091B0FF9DF00F65C05 /* Images.xcassets */; };
 		63888C0D1B0FF9DF00F65C05 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63888C0B1B0FF9DF00F65C05 /* LaunchScreen.xib */; };
 		63888C191B0FF9DF00F65C05 /* TPWeatherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C181B0FF9DF00F65C05 /* TPWeatherTests.m */; };
+		63888C241B102A0F00F65C05 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C231B102A0F00F65C05 /* SettingViewController.m */; };
+		63888C271B10E9DD00F65C05 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C261B10E9DD00F65C05 /* DataController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,10 @@
 		63888C121B0FF9DF00F65C05 /* TPWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TPWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63888C171B0FF9DF00F65C05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63888C181B0FF9DF00F65C05 /* TPWeatherTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TPWeatherTests.m; sourceTree = "<group>"; };
+		63888C221B102A0F00F65C05 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		63888C231B102A0F00F65C05 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		63888C251B10E9DD00F65C05 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		63888C261B10E9DD00F65C05 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,10 @@
 				63888C091B0FF9DF00F65C05 /* Images.xcassets */,
 				63888C0B1B0FF9DF00F65C05 /* LaunchScreen.xib */,
 				63888BF61B0FF9DF00F65C05 /* Supporting Files */,
+				63888C221B102A0F00F65C05 /* SettingViewController.h */,
+				63888C231B102A0F00F65C05 /* SettingViewController.m */,
+				63888C251B10E9DD00F65C05 /* DataController.h */,
+				63888C261B10E9DD00F65C05 /* DataController.m */,
 			);
 			path = TPWeather;
 			sourceTree = "<group>";
@@ -178,6 +188,7 @@
 				TargetAttributes = {
 					63888BF21B0FF9DF00F65C05 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 9KQ4DGKV42;
 					};
 					63888C111B0FF9DF00F65C05 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -233,7 +244,9 @@
 				63888BFC1B0FF9DF00F65C05 /* AppDelegate.m in Sources */,
 				63888C051B0FF9DF00F65C05 /* ModelController.m in Sources */,
 				63888BF91B0FF9DF00F65C05 /* main.m in Sources */,
+				63888C271B10E9DD00F65C05 /* DataController.m in Sources */,
 				63888BFF1B0FF9DF00F65C05 /* RootViewController.m in Sources */,
+				63888C241B102A0F00F65C05 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,9 +374,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TPWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -371,9 +387,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TPWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -12,6 +12,8 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) id dataObject;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+- (IBAction)setup:(id)sender;
 
 @end
 

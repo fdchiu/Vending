@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface TPWeatherSetup: NSObject
+@property (strong,nonatomic) NSMutableArray *zipcode;
+@end
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

@@ -8,6 +8,7 @@
 
 #import "ModelController.h"
 #import "DataViewController.h"
+#import "DataController.h"
 
 /*
  A controller object that manages a simple model -- a collection of month names.
@@ -22,6 +23,7 @@
 @interface ModelController ()
 
 @property (readonly, strong, nonatomic) NSArray *pageData;
+@property (readonly,strong,nonatomic) DataController *dataController;
 @end
 
 @implementation ModelController
