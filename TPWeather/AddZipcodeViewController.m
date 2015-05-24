@@ -56,12 +56,14 @@
     }
     
     NSString *tmpString=[self.zipcodeTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    if([self.dataController dataExist:tmpString] ) {
+    if([self.dataController dataExist:tmpString]!=NSNotFound ) {
         [self.statusLabel setText:@"Zipcode exists"];
         return;
     }
     [self.dataController addZipcode:tmpString];
     [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"Weather zipcode added:%@",tmpString);
+
 }
 
 
@@ -93,6 +95,7 @@
         [self.statusLabel setText:@"Zipcode must be a 5 digit number"];
     }
     [textField setText:userInputString];
+    NSLog(@"Validate zipcode entered by user: %@", userInputString);
 }
 
 @end

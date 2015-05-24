@@ -17,5 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+-(void)refresh;
+
 @end
 

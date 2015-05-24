@@ -39,6 +39,8 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.tableView reloadData];
+    
+    NSLog(@"Showing settings screen");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,11 +54,14 @@
 }
 - (IBAction)changeQueryMethod:(id)sender {
     [self.dataController setRefreshType:[(UISegmentedControl*)sender selectedSegmentIndex]];
+    NSLog(@"Weather query method changed");
 }
 
 - (IBAction)done:(id)sender {
     [self.dataController saveSettings];
     [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"Exit Setting screen");
+
 }
 - (IBAction)addZipcode:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -64,7 +69,6 @@
     UIViewController *vC=[storyboard instantiateViewControllerWithIdentifier:@"AddZipcodeViewController"];
     [(AddZipcodeViewController*)vC setDataController:self.dataController];
     [self presentViewController:vC animated:YES completion:nil];
-    
 }
 
 /*
@@ -79,20 +83,31 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dataController.zipcodes count];
+    return [self.dataController count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZipcodeCell"];
     if(!cell)
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ZipcodeCell"];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"ZipcodeCell"];
     
-    NSDictionary *weather=[self.dataController.zipcodes objectAtIndex:indexPath.row];
+    NSDictionary *weather=[self.dataController objectAtIndex:indexPath.row];
     cell.imageView.image = [UIImage imageNamed:[DataController getImageForWeather:[weather objectForKey:@"weather"]]];
-    cell.textLabel.text = [weather objectForKey:@"zipcode"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@",[weather objectForKey:@"city"],[weather objectForKey:@"zipcode"]];
     
-    
+    [cell.detailTextLabel setText:[NSString stringWithFormat:@"Temp: %@ Humidity: %@",[weather objectForKey:@"temperature"], [weather objectForKey:@"humidity"]]];
+
+    NSLog(@"Seetings: create new table cell: %@", cell.textLabel.text);
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"Weather zipcode to be deleted:%@",[[self.dataController objectAtIndex:indexPath.row] valueForKey:@"zipcode"]);
+        [self.dataController removeObjectAtIndex:indexPath.row];
+        [tableView reloadData];
+
+    }
 }
 
 @end

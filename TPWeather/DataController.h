@@ -13,10 +13,36 @@ enum {
     TPWeather_Refresh_Concurrent,
 };
 
-@interface DataController : NSObject
-@property (strong,nonatomic) NSMutableArray *zipcodes;
+enum {
+    TPWeather_Temp_Units_F=0,
+    TPWeather_Temp_Units_C,
+    TPWeather_Temp_Units_K,
+};
+
+@interface  DataTask:NSObject
+
+@property (strong,nonatomic) NSConnection *connection;
+@property (strong,nonatomic) NSData *responseData;
+
+@end
+
+@protocol DataControllerDelegate <NSObject>
+
+@optional
+
+-(void)updateWeatherForZipcode:(NSString*)zipcode;
+-(void)refreshComplete;
+@end
+
+@interface DataController : NSObject <NSURLConnectionDelegate>
+@property (strong,nonatomic,readonly) NSMutableArray *weathers;
 @property (assign,nonatomic) NSInteger refreshType;
 @property(strong,nonatomic) NSDictionary *weatherImage;
+
+@property (weak,nonatomic) id <DataControllerDelegate> delegate;
+@property (assign,atomic) BOOL syncing;
+@property (assign,nonatomic) NSInteger temperatureUnits;
+
 
 +(DataController*)sharedDataController;
 +(NSString*)getImageForWeather:(NSString*)weatherString;
@@ -24,8 +50,13 @@ enum {
 -(NSInteger)count;
 -(id)objectAtIndex:(NSInteger)index;
 - (NSInteger)indexOfObject:(id)object;
--(BOOL)dataExist:(NSString*)zipcode;
+-(void)removeObjectAtIndex:(NSInteger)index;
+-(NSInteger)dataExist:(NSString*)zipcode;
 -(void)addZipcode:(NSString*)zipcode;
+
 -(void)saveSettings;
 -(void)loadSettings;
+
+-(void)refresh;
+
 @end

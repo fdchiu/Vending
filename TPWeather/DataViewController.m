@@ -28,17 +28,27 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.dataLabel.text = [[(NSDictionary*)self.dataObject objectForKey:@"zipcode"] description];
+    [self refresh];
+    NSLog(@"DataViewController: showing weather for: %@ (%@)", [self.dataObject valueForKey:@"city"],[self.dataObject valueForKey:@"zipcode"]);
+
+}
+
+-(void)refresh
+{
+    self.dataLabel.text = [NSString stringWithFormat:@"%@ (%@)",[(NSDictionary*)self.dataObject objectForKey:@"city"],[(NSDictionary*)self.dataObject objectForKey:@"zipcode"]];
     self.temperatureLabel.text = [[(NSDictionary*)self.dataObject objectForKey:@"temperature"] description];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MMM d, h:mm a"];
     NSString *weatherString=[[(NSDictionary*)self.dataObject objectForKey:@"weather"] description];
-
+    
+    NSArray *subview=[self.weatherImageView subviews];
+    if( subview && [subview count]>0)
+        [[[self.weatherImageView subviews] objectAtIndex:0] removeFromSuperview];
+    
     UIImageView *imgv=[[UIImageView alloc] initWithImage:[UIImage imageNamed:[DataController getImageForWeather:weatherString]]];
     [self.weatherImageView addSubview:imgv];
-
+    
     self.dateLabel.text = [dateFormatter stringFromDate:[NSDate date]];
+    
 }
-
-
 @end

@@ -14,6 +14,8 @@
 @interface RootViewController ()
 
 @property (readonly, strong, nonatomic) ModelController *modelController;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityView;
 @end
 
 @implementation RootViewController
@@ -50,6 +52,18 @@
 
     // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
     self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+    
+    self.pageControl.numberOfPages = [self.modelController.dataController count];
+    
+    
+    [self.activityView setHidesWhenStopped:YES];
+    [self.activityView stopAnimating];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self refresh:nil];
+    });
+    NSLog(@"RootViewController: viewDidLoad complete");
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +77,7 @@
     if (!_modelController) {
         _modelController = [[ModelController alloc] init];
     }
+    [_modelController.dataController setDelegate:self];
     return _modelController;
 }
 
@@ -98,6 +113,15 @@
     return UIPageViewControllerSpineLocationMid;
 }
 
+- (void)pageViewController:(UIPageViewController *)pageViewController
+        didFinishAnimating:(BOOL)finished
+   previousViewControllers:(NSArray *)previousViewControllers
+       transitionCompleted:(BOOL)completed
+{
+        if(completed)
+            [self.pageControl setCurrentPage:[self.modelController indexOfViewController:self.pageViewController.viewControllers[0]]];
+}
+
 #pragma mark - Setting Button
 
 - (IBAction)setup:(id)sender {
@@ -108,6 +132,32 @@
     [self presentViewController:vC animated:YES completion:^ {
         
     }];
+    NSLog(@"RootViewController: setup");
+   
+}
+
+- (IBAction)refresh:(id)sender {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{[self.modelController.dataController refresh];});
+    [self.activityView startAnimating];
+    
+    NSLog(@"RootViewController: refresh temperature");
+
+}
+
+#pragma mark - datacontroller delegate
+-(void)updateWeatherForZipcode:(NSString*)zipcode
+{
+    DataViewController *currentView = [self.pageViewController.viewControllers objectAtIndex:0];
+    
+    if([[[currentView dataObject] valueForKey:@"zipcode"] isEqualToString:zipcode])
+        [currentView refresh];
+    
+}
+-(void)refreshComplete
+{
+    [self.activityView stopAnimating];
+    NSLog(@"RootViewController: refresh complete");
     
 }
 

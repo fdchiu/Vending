@@ -22,7 +22,7 @@
 
 @interface ModelController ()
 
-@property (readonly, strong, nonatomic) NSArray *pageData;
+//@property (readonly, strong, nonatomic) NSArray *pageData;
 @end
 
 @implementation ModelController
@@ -31,8 +31,8 @@
     self = [super init];
     if (self) {
         // Create the data model.
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        _pageData = [[dateFormatter monthSymbols] copy];
+        //NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //_pageData = [[dateFormatter monthSymbols] copy];
         _dataController = [DataController sharedDataController];
     }
     return self;
@@ -45,10 +45,6 @@
         return nil;
     }
 
-    /*if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
-        return nil;
-    }
-     */
 
     // Create a new view controller and pass suitable data.
     DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"DataViewController"];
@@ -90,5 +86,15 @@
     }
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];
 }
+
+- (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController
+{
+    return [self.dataController count];
+}
+- (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
+{
+    return 0;
+}
+
 
 @end
