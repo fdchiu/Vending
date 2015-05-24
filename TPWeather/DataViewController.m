@@ -7,9 +7,11 @@
 //
 
 #import "DataViewController.h"
+#import "DataController.h"
 
-@interface DataViewController ()
 
+@interface DataViewController () {
+}
 @end
 
 @implementation DataViewController
@@ -26,7 +28,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.dataLabel.text = [self.dataObject description];
+    self.dataLabel.text = [[(NSDictionary*)self.dataObject objectForKey:@"zipcode"] description];
+    self.temperatureLabel.text = [[(NSDictionary*)self.dataObject objectForKey:@"temperature"] description];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MMM d, h:mm a"];
+    NSString *weatherString=[[(NSDictionary*)self.dataObject objectForKey:@"weather"] description];
+
+    UIImageView *imgv=[[UIImageView alloc] initWithImage:[UIImage imageNamed:[DataController getImageForWeather:weatherString]]];
+    [self.weatherImageView addSubview:imgv];
+
+    self.dateLabel.text = [dateFormatter stringFromDate:[NSDate date]];
 }
 
 

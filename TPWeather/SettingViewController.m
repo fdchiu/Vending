@@ -7,13 +7,17 @@
 //
 
 #import "SettingViewController.h"
+#import "AddZipcodeViewController.h"
 
 @interface SettingViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *queryTypeSC;
 
 @end
 
+
 @implementation SettingViewController
+@synthesize dataController;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,12 +28,17 @@
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:recognizer];
     
+    [self.queryTypeSC setSelectedSegmentIndex:[self.dataController refreshType]];
     
     /*recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     [recognizer setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.view addGestureRecognizer:recognizer];
      */
 
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,14 +50,19 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)changeQueryMethod:(id)sender {
+    [self.dataController setRefreshType:[(UISegmentedControl*)sender selectedSegmentIndex]];
+}
 
 - (IBAction)done:(id)sender {
+    [self.dataController saveSettings];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)addZipcode:(id)sender {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UIViewController *vC=[storyboard instantiateViewControllerWithIdentifier:@"AddZipcodeViewController"];
+    [(AddZipcodeViewController*)vC setDataController:self.dataController];
     [self presentViewController:vC animated:YES completion:nil];
     
 }
@@ -65,8 +79,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.datacontroller.zipcodes count];
+    return [self.dataController.zipcodes count];
 }
-
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ZipcodeCell"];
+    if(!cell)
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ZipcodeCell"];
+    
+    NSDictionary *weather=[self.dataController.zipcodes objectAtIndex:indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:[DataController getImageForWeather:[weather objectForKey:@"weather"]]];
+    cell.textLabel.text = [weather objectForKey:@"zipcode"];
+    
+    
+    return cell;
+}
 
 @end

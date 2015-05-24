@@ -15,10 +15,17 @@ enum {
 
 @interface DataController : NSObject
 @property (strong,nonatomic) NSMutableArray *zipcodes;
-@property (assign,nonatomic) NSInteger *refreshType;
+@property (assign,nonatomic) NSInteger refreshType;
+@property(strong,nonatomic) NSDictionary *weatherImage;
 
++(DataController*)sharedDataController;
++(NSString*)getImageForWeather:(NSString*)weatherString;
 
 -(NSInteger)count;
 -(id)objectAtIndex:(NSInteger)index;
-
+- (NSInteger)indexOfObject:(id)object;
+-(BOOL)dataExist:(NSString*)zipcode;
+-(void)addZipcode:(NSString*)zipcode;
+-(void)saveSettings;
+-(void)loadSettings;
 @end

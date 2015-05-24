@@ -11,5 +11,6 @@
 
 @interface SettingViewController : UIViewController
 
-@property(weak, nonatomic) DataController* datacontroller;
+@property(weak, nonatomic) DataController* dataController;
+
 @end

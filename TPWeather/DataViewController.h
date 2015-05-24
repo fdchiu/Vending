@@ -12,8 +12,10 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *dataLabel;
 @property (strong, nonatomic) id dataObject;
-@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-- (IBAction)setup:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *temperatureLabel;
+@property (weak, nonatomic) IBOutlet UIView *weatherImageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 

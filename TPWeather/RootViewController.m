@@ -9,6 +9,7 @@
 #import "RootViewController.h"
 #import "ModelController.h"
 #import "DataViewController.h"
+#import "SettingViewController.h"
 
 @interface RootViewController ()
 
@@ -103,7 +104,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     UIViewController *vC=[storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
-    [self presentViewController:vC animated:YES completion:nil];
+    [(SettingViewController*)vC setDataController:self.modelController.dataController];
+    [self presentViewController:vC animated:YES completion:^ {
+        
+    }];
     
 }
 

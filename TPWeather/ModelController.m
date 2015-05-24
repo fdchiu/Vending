@@ -23,7 +23,6 @@
 @interface ModelController ()
 
 @property (readonly, strong, nonatomic) NSArray *pageData;
-@property (readonly,strong,nonatomic) DataController *dataController;
 @end
 
 @implementation ModelController
@@ -34,26 +33,35 @@
         // Create the data model.
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         _pageData = [[dateFormatter monthSymbols] copy];
+        _dataController = [DataController sharedDataController];
     }
     return self;
 }
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard {
     // Return the data view controller for the given index.
-    if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
+
+    if (([self.dataController count] == 0) || (index >= [self.dataController count])) {
         return nil;
     }
 
+    /*if (([self.pageData count] == 0) || (index >= [self.pageData count])) {
+        return nil;
+    }
+     */
+
     // Create a new view controller and pass suitable data.
     DataViewController *dataViewController = [storyboard instantiateViewControllerWithIdentifier:@"DataViewController"];
-    dataViewController.dataObject = self.pageData[index];
+    dataViewController.dataObject = [self.dataController objectAtIndex:index]; // self.pageData[index];
     return dataViewController;
 }
 
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController {
     // Return the index of the given data view controller.
     // For simplicity, this implementation uses a static array of model objects and the view controller stores the model object; you can therefore use the model object to identify the index.
-    return [self.pageData indexOfObject:viewController.dataObject];
+    
+    return [self.dataController indexOfObject:viewController.dataObject];
+    //return [self.pageData indexOfObject:viewController.dataObject];
 }
 
 #pragma mark - Page View Controller Data Source
@@ -77,7 +85,7 @@
     }
     
     index++;
-    if (index == [self.pageData count]) {
+    if (index == [self.dataController count]) {
         return nil;
     }
     return [self viewControllerAtIndex:index storyboard:viewController.storyboard];

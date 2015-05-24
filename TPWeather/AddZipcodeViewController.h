@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class DataController;
+
 @interface AddZipcodeViewController : UIViewController
+
+@property (weak, nonatomic) DataController *dataController;
 
 @end

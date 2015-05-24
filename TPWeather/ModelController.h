@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @class DataViewController;
+@class DataController;
 
 @interface ModelController : NSObject <UIPageViewControllerDataSource>
+@property (readonly,strong,nonatomic) DataController *dataController;
 
 - (DataViewController *)viewControllerAtIndex:(NSUInteger)index storyboard:(UIStoryboard *)storyboard;
 - (NSUInteger)indexOfViewController:(DataViewController *)viewController;
