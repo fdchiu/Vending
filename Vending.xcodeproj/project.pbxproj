@@ -18,7 +18,9 @@
 		63888C191B0FF9DF00F65C05 /* VendingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C181B0FF9DF00F65C05 /* VendingTests.m */; };
 		63888C241B102A0F00F65C05 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C231B102A0F00F65C05 /* SettingViewController.m */; };
 		63888C271B10E9DD00F65C05 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C261B10E9DD00F65C05 /* DataController.m */; };
-		63888C2A1B11007700F65C05 /* AddZipcodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C291B11007700F65C05 /* AddZipcodeViewController.m */; };
+		63888C2A1B11007700F65C05 /* AddMachineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63888C291B11007700F65C05 /* AddMachineViewController.m */; };
+		63C8A4BE1B13CAA70077725E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C8A4BD1B13CAA70077725E /* CFNetwork.framework */; };
+		63C8A4C21B13CD230077725E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C8A4C11B13CD230077725E /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +55,12 @@
 		63888C231B102A0F00F65C05 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		63888C251B10E9DD00F65C05 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		63888C261B10E9DD00F65C05 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
-		63888C281B11007700F65C05 /* AddZipcodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZipcodeViewController.h; sourceTree = "<group>"; };
-		63888C291B11007700F65C05 /* AddZipcodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZipcodeViewController.m; sourceTree = "<group>"; };
+		63888C281B11007700F65C05 /* AddMachineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMachineViewController.h; sourceTree = "<group>"; };
+		63888C291B11007700F65C05 /* AddMachineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMachineViewController.m; sourceTree = "<group>"; };
+		63C8A4BD1B13CAA70077725E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		63C8A4C01B13CD230077725E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		63C8A4C11B13CD230077725E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		63C8A4C31B13CDD90077725E /* libsystem_configuration.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsystem_configuration.dylib; path = usr/lib/system/libsystem_configuration.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C8A4BE1B13CAA70077725E /* CFNetwork.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +85,9 @@
 		63888BEA1B0FF9DF00F65C05 = {
 			isa = PBXGroup;
 			children = (
+				63C8A4C31B13CDD90077725E /* libsystem_configuration.dylib */,
+				63C8A4BF1B13CD010077725E /* 3rd Party */,
+				63C8A4BD1B13CAA70077725E /* CFNetwork.framework */,
 				63888BF51B0FF9DF00F65C05 /* Vending */,
 				63888C151B0FF9DF00F65C05 /* VendingTests */,
 				63888BF41B0FF9DF00F65C05 /* Products */,
@@ -112,8 +122,8 @@
 				63888C231B102A0F00F65C05 /* SettingViewController.m */,
 				63888C251B10E9DD00F65C05 /* DataController.h */,
 				63888C261B10E9DD00F65C05 /* DataController.m */,
-				63888C281B11007700F65C05 /* AddZipcodeViewController.h */,
-				63888C291B11007700F65C05 /* AddZipcodeViewController.m */,
+				63888C281B11007700F65C05 /* AddMachineViewController.h */,
+				63888C291B11007700F65C05 /* AddMachineViewController.m */,
 			);
 			path = Vending;
 			sourceTree = "<group>";
@@ -142,6 +152,15 @@
 				63888C171B0FF9DF00F65C05 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63C8A4BF1B13CD010077725E /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				63C8A4C01B13CD230077725E /* Reachability.h */,
+				63C8A4C11B13CD230077725E /* Reachability.m */,
+			);
+			name = "3rd Party";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,10 +267,11 @@
 				63888C021B0FF9DF00F65C05 /* DataViewController.m in Sources */,
 				63888BFC1B0FF9DF00F65C05 /* AppDelegate.m in Sources */,
 				63888C051B0FF9DF00F65C05 /* ModelController.m in Sources */,
-				63888C2A1B11007700F65C05 /* AddZipcodeViewController.m in Sources */,
+				63888C2A1B11007700F65C05 /* AddMachineViewController.m in Sources */,
 				63888BF91B0FF9DF00F65C05 /* main.m in Sources */,
 				63888C271B10E9DD00F65C05 /* DataController.m in Sources */,
 				63888BFF1B0FF9DF00F65C05 /* RootViewController.m in Sources */,
+				63C8A4C21B13CD230077725E /* Reachability.m in Sources */,
 				63888C241B102A0F00F65C05 /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -368,7 +388,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -385,8 +405,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Vending/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -399,8 +424,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Vending/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
